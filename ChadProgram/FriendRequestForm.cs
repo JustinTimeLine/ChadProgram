@@ -10,14 +10,17 @@ using System.Windows.Forms;
 
 namespace ChadProgram
 {
-    public partial class FriendsForm : Form
+    public partial class FriendRequestForm : Form
     {
         SQLDataLayer dl = new SQLDataLayer();
-        public FriendsForm()
+        public FriendRequestForm()
         {
             InitializeComponent();
-            lstFriends.DataSource = dl.GetCurrentFriends();
-            lstRequests.DataSource = dl.GetFriendsRequests();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            dl.FriendRequest(ChatWindow.Username, txtName.Text); //user1 is always making the request
         }
     }
 }

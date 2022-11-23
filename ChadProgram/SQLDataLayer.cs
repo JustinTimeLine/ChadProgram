@@ -511,6 +511,42 @@ namespace ChadProgram
             return friends;
         }
 
+        public List<string> GetFriendsRequests()
+        {
+            List<string> friends = new List<string>();
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand($"select user1 from friends where (user1 = '{ChatWindow.Username}' or user2 = '{ChatWindow.Username}') and request_accepted = 0", conn);
+                SqlCommand cmd2 = new SqlCommand($"select user2 from friends where (user1 = '{ChatWindow.Username}' or user2 = '{ChatWindow.Username}') and request_accepted = 0", conn);
+                //cmd.Parameters.AddWithValue("@user", user);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() != ChatWindow.Username)
+                        friends.Add(reader[0].ToString());
+                }
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    if (reader2[0].ToString() != ChatWindow.Username)
+                        friends.Add(reader2[0].ToString());
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //ExecuteDataReader("select * from chat");
+
+            return friends;
+        }
 
         public int GetUnreadMessagesCount(string userName)
         {
