@@ -44,5 +44,16 @@ namespace ChadProgram
                 lstMessages.SelectedIndex = lstMessages.Items.Count-1;
             }
         }
+
+        private void txtMessage_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SQLDataLayer dl = new SQLDataLayer();
+                dl.SendDirectMessage(this.otherUser,txtMessage.Text);
+                //SendMessage(txtMessage.Text);
+                txtMessage.Clear();
+            }
+        }
     }
 }
