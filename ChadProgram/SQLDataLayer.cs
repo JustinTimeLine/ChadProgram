@@ -749,7 +749,7 @@ bool ret = true;
             int count = (int)ExecuteScalar($"select count(*) from jobapplications where job_title = '{title}' and first_name = '{firstName}' and last_name = '{lastName}'");
             if (count == 0)
             {
-
+                
                bool ret = true;
             string qry = $"insert into JobApplications values ('{title}', '{poster}', '{firstName}','{lastName}','{phone}', '{email}')";
             ret = ExecuteNonQuery(qry);

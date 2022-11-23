@@ -49,8 +49,12 @@ namespace ChadProgram
 
         private void btnApply_Click_1(object sender, EventArgs e)
         {
-            JobApplication app = new JobApplication(dataGridView1.CurrentRow.Cells[0].Value.ToString(), dataGridView1.CurrentRow.Cells[4].Value.ToString());
-            app.Show();
+            if (dataGridView1.Rows.Count > 1 && dataGridView1.Columns.Count > 1) //dgv has extra row by default
+            {
+                JobApplication app = new JobApplication(dataGridView1.CurrentRow.Cells[0].Value.ToString(), dataGridView1.CurrentRow.Cells[4].Value.ToString());
+                app.Show();
+            }
+
         }
     }
 }
