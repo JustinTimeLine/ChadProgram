@@ -467,13 +467,19 @@ namespace ChadProgram
             bool ret;
             SqlConnection conn = new SqlConnection(connectionString);
 
-            int count = (int)ExecuteScalar($"select count(*) from friends where user1 = '{user1}' and user2 = '{user2}'");
+            int count = (int)ExecuteScalar($"select count(*) from friends where (user1 = '{user1}' and user2 = '{user2}') or (user2 = '{user1}' and user1 = '{user2}')");
 
+            if (count == 0)
+            {
             string qry = $"use chatdb insert into Friends values ('{user1}', '{user2}',0)"; //bit 0 is not accepted
             SqlCommand cmd = new SqlCommand(qry, conn);
             //cmd.Parameters.AddWithValue("@user1", user1);
             //cmd.Parameters.AddWithValue("@user2", user2);
             return ret = ExecuteNonQuery(qry);
+
+            }
+            else
+                return false;
         }
 
         public List<string> GetCurrentFriends()
