@@ -345,7 +345,7 @@ namespace ChadProgram
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"select group_name from groupusers where username = '{user}", conn);
+                SqlCommand cmd = new SqlCommand($"select group_name from groupusers where username = '{user}'", conn);
                 //cmd.Parameters.AddWithValue("@user", user);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
