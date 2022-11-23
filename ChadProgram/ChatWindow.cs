@@ -140,5 +140,11 @@ namespace ChadProgram
                 txtMessage.Clear();
             }
         }
+
+        private void btnFriends_Click(object sender, EventArgs e)
+        {
+            FriendsForm f = new FriendsForm();
+            f.Show();
+        }
     }
 }

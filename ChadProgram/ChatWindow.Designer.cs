@@ -39,6 +39,7 @@
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFriends = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +129,22 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
+            // btnFriends
+            // 
+            this.btnFriends.Location = new System.Drawing.Point(395, 2);
+            this.btnFriends.Name = "btnFriends";
+            this.btnFriends.Size = new System.Drawing.Size(240, 23);
+            this.btnFriends.TabIndex = 11;
+            this.btnFriends.Text = "See friends (hopefully)";
+            this.btnFriends.UseVisualStyleBackColor = true;
+            this.btnFriends.Click += new System.EventHandler(this.btnFriends_Click);
+            // 
             // ChatWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 295);
+            this.Controls.Add(this.btnFriends);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnJobs);
             this.Controls.Add(this.lblUsername);
@@ -160,5 +172,6 @@
         private DataGridView dgvUsers;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private Button btnFriends;
     }
 }

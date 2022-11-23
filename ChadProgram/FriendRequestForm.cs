@@ -20,7 +20,15 @@ namespace ChadProgram
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            dl.FriendRequest(ChatWindow.Username, txtName.Text); //user1 is always making the request
+            bool worked;
+            worked = dl.FriendRequest(ChatWindow.Username, txtName.Text); //user1 is always making the request
+            if (worked)
+            {
+                MessageBox.Show("Success!");
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+                MessageBox.Show("Failed to add friend");
         }
     }
 }

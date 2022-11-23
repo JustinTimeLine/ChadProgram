@@ -467,10 +467,10 @@ namespace ChadProgram
             bool ret;
             SqlConnection conn = new SqlConnection(connectionString);
 
-            string qry = $"use chatdb insert into Friends values ('@user1', '@user2',0)"; //bit 0 is not accepted
+            string qry = $"use chatdb insert into Friends values ('{user1}', '{user2}',0)"; //bit 0 is not accepted
             SqlCommand cmd = new SqlCommand(qry, conn);
-            cmd.Parameters.AddWithValue("@user1", user1);
-            cmd.Parameters.AddWithValue("@user2", user2);
+            //cmd.Parameters.AddWithValue("@user1", user1);
+            //cmd.Parameters.AddWithValue("@user2", user2);
             return ret = ExecuteNonQuery(qry);
         }
 

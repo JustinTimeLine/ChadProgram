@@ -33,6 +33,7 @@
             this.lstFriends = new System.Windows.Forms.ListBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnRequest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstRequests
@@ -69,11 +70,22 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnRequest
+            // 
+            this.btnRequest.Location = new System.Drawing.Point(566, 308);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Size = new System.Drawing.Size(124, 23);
+            this.btnRequest.TabIndex = 2;
+            this.btnRequest.Text = "Add new friend";
+            this.btnRequest.UseVisualStyleBackColor = true;
+            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
+            // 
             // FriendsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 342);
+            this.Controls.Add(this.btnRequest);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lstFriends);
             this.Controls.Add(this.lstRequests);
@@ -89,5 +101,6 @@
         private ListBox lstFriends;
         private Button btnAccept;
         private System.Windows.Forms.Timer timer1;
+        private Button btnRequest;
     }
 }

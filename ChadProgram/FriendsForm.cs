@@ -35,7 +35,15 @@ namespace ChadProgram
         private void btnAccept_Click(object sender, EventArgs e)
         {
             dl.FriendRequestAccept(lstRequests.SelectedValue.ToString());
+            lstFriends.DataSource = dl.GetCurrentFriends();
+            lstRequests.DataSource = dl.GetFriendsRequests();
             btnAccept.Visible = false;
+        }
+
+        private void btnRequest_Click(object sender, EventArgs e)
+        {
+            FriendRequestForm frm = new FriendRequestForm();
+            frm.ShowDialog();
         }
     }
 }
