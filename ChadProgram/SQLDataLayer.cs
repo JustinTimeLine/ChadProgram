@@ -491,12 +491,14 @@ namespace ChadProgram
                     if (reader[0].ToString() != ChatWindow.Username)
                         friends.Add(reader[0].ToString());
                 }
+                reader.Close();
                 SqlDataReader reader2 = cmd2.ExecuteReader();
                 while (reader2.Read())
                 {
                     if (reader2[0].ToString() != ChatWindow.Username)
                         friends.Add(reader2[0].ToString());
                 }
+                reader2.Close();
             }
             catch
             {
@@ -552,7 +554,7 @@ namespace ChadProgram
         {
             //user1 is always making the request
 
-            return ExecuteNonQuery($"update Friends set request_accepted = 1 where (user1 = '{ChatWindow.Username}' and user2 = '{requester}' or user1 = '{requester}' and user2 = '{ChatWindow.Username}'");
+            return ExecuteNonQuery($"update Friends set request_accepted = 1 where user1 = '{ChatWindow.Username}' and user2 = '{requester}' or user1 = '{requester}' and user2 = '{ChatWindow.Username}'");
 
         }
 

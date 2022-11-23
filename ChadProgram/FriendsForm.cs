@@ -16,12 +16,13 @@ namespace ChadProgram
         public FriendsForm()
         {
             InitializeComponent();
-            lstFriends.DataSource = dl.GetCurrentFriends();
-            lstRequests.DataSource = dl.GetFriendsRequests();
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            lstFriends.DataSource = dl.GetCurrentFriends();
+            lstRequests.DataSource = dl.GetFriendsRequests();
             if (lstRequests.SelectedIndex >= 0)
             {             
                 btnAccept.Visible = true;
