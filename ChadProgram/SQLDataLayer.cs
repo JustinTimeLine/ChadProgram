@@ -726,21 +726,38 @@ namespace ChadProgram
 
         public bool SubmitJob(string title, string description, double wage, double hours)
         {
-            bool ret = true;
+            
+
+            int count = (int)ExecuteScalar($"select count(*) from jobs where job_title = '{title}' and poster = '{ChatWindow.Username}'");
+            if (count == 0)
+            {
+bool ret = true;
             string userName = ChatWindow.Username.ToString();
             string qry = $"insert into Jobs values ('{title}', '{description}', '{wage}','{hours}','{userName}')";
             ret = ExecuteNonQuery(qry);
 
             return ret;
+                
+
+            }
+            else return false;
         }
 
         public bool SubmitApp(string title, string poster, string firstName, string lastName, int phone, string email)
         {
-            bool ret = true;
+            
+            int count = (int)ExecuteScalar($"select count(*) from jobapplications where job_title = '{title}' and first_name = '{firstName}' and last_name = '{lastName}'");
+            if (count == 0)
+            {
+
+               bool ret = true;
             string qry = $"insert into JobApplications values ('{title}', '{poster}', '{firstName}','{lastName}','{phone}', '{email}')";
             ret = ExecuteNonQuery(qry);
 
             return ret;
+
+            }
+            else return false;
         }
 
     }
