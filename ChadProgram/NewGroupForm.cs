@@ -26,7 +26,17 @@ namespace ChadProgram
 
         private void btnAdduser_Click(object sender, EventArgs e)
         {
-            dl.RegisterGroupUser(txtGroupName.Text, txtAddUser.Text);
+            if (txtGroupName.Text != "")
+            {
+              bool w =  dl.RegisterGroupUser(txtGroupName.Text, txtAddUser.Text);
+                if (w)
+                    MessageBox.Show("Success");
+                else
+                    MessageBox.Show("Failed to add user. Does the group exist, are they already in it?");
+
+            }
+            else
+                MessageBox.Show("Please add the group first");
         }
     }
 }
