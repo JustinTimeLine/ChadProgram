@@ -50,7 +50,7 @@ namespace ChadProgram
             if (e.KeyCode == Keys.Enter)
             {
                 SQLDataLayer dl = new SQLDataLayer();
-                dl.SendMessage(txtMessage.Text);
+                dl.SendDirectMessage(this.otherUser,txtMessage.Text);
                 //SendMessage(txtMessage.Text);
                 txtMessage.Clear();
             }
