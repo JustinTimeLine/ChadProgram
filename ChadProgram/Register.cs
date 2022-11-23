@@ -24,24 +24,28 @@ namespace ChadProgram
         {
             //no parameter because we want config
             SQLDataLayer dl = new SQLDataLayer();
-           
-            bool registerWorked = dl.RegisterUser(txtName.Text, txtPass.Text);
-            if (registerWorked)
+
+            if (txtName.Text != "" && txtPass.Text != "")
             {
-                MessageBox.Show("Success");
-                if (txtFirstName.Text != "")
+                bool registerWorked = dl.RegisterUser(txtName.Text, txtPass.Text);
+                if (registerWorked)
                 {
-                    dl.FirstName(txtName.Text, txtFirstName.Text);
+                    MessageBox.Show("Success");
+                    if (txtFirstName.Text != "")
+                    {
+                        dl.FirstName(txtName.Text, txtFirstName.Text);
+                    }
+                    if (txtLastName.Text != "")
+                    {
+                        dl.LastName(txtName.Text, txtLastName.Text);
+                    }
                 }
-                if (txtLastName.Text != "")
+                else
                 {
-                    dl.LastName(txtName.Text, txtLastName.Text);
+                    MessageBox.Show("You failed to make a new user");
                 }
             }
-            else
-            {
-                MessageBox.Show("You failed to make a new user");
-            }
+
         }
     }
 }

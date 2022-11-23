@@ -43,7 +43,7 @@ namespace ChadProgram
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Register reg = new Register();
-            reg.Show();
+            reg.ShowDialog();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
