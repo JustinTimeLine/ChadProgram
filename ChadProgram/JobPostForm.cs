@@ -29,11 +29,15 @@ namespace ChadProgram
             if (double.TryParse(txtWage.Text, out double wage) && double.TryParse(txtHours.Text, out double hours) && txtDescription.Text != "" && txtTitle.Text != "")
             {
                 SQLDataLayer dl = new SQLDataLayer();
-                dl.SubmitJob(txtTitle.Text, txtDescription.Text, wage, hours);
+                bool w = dl.SubmitJob(txtTitle.Text, txtDescription.Text, wage, hours);
                 txtTitle.Clear();
                 txtDescription.Clear();
                 txtHours.Clear();
                 txtWage.Clear();
+                if (w)
+                    MessageBox.Show("Sucessfully posted");
+                else
+                    MessageBox.Show("Job posting failed (does it already exist?)");
             }
             else
                 MessageBox.Show("Please enter valid values in all fields");

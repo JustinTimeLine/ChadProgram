@@ -31,11 +31,15 @@ namespace ChadProgram
             {
                 if (int.TryParse(txtPhone.Text, out int id))
                 {
-                    dl.SubmitApp(Title, Poster, txtFirstName.Text, txtLastName.Text, id, txtEmail.Text);
+                    bool w = dl.SubmitApp(Title, Poster, txtFirstName.Text, txtLastName.Text, id, txtEmail.Text);
                     txtFirstName.Clear();
                     txtLastName.Clear();
                     txtPhone.Clear();
                     txtEmail.Clear();
+                    if (w)
+                        MessageBox.Show("Successfully applied");
+                    else
+                        MessageBox.Show("Failed to apply. Have you already done so?");
                 }
                 else
                     MessageBox.Show("Enter only numeric characters in the phone number field");
