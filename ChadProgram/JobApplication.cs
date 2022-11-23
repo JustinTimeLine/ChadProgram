@@ -27,11 +27,22 @@ namespace ChadProgram
         {
 
             SQLDataLayer dl = new SQLDataLayer();
-            dl.SubmitApp(Title, Poster, txtFirstName.Text, txtLastName.Text, int.Parse(txtPhone.Text), txtEmail.Text);
-            txtFirstName.Clear();
-            txtLastName.Clear();
-            txtPhone.Clear();
-            txtEmail.Clear();
+            if (txtEmail.Text != "" && txtFirstName.Text != "" && txtLastName.Text != "" && txtPhone.Text != "")
+            {
+                if (int.TryParse(txtPhone.Text, out int id))
+                {
+                    dl.SubmitApp(Title, Poster, txtFirstName.Text, txtLastName.Text, id, txtEmail.Text);
+                    txtFirstName.Clear();
+                    txtLastName.Clear();
+                    txtPhone.Clear();
+                    txtEmail.Clear();
+                }
+                else
+                    MessageBox.Show("Enter only numeric characters in the phone number field");
+
+            }
+            else
+                MessageBox.Show("Please fill all fields");
         }
     }
 }

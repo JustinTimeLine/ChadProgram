@@ -26,12 +26,18 @@ namespace ChadProgram
 
         private void btnSubmit_Click_1(object sender, EventArgs e)
         {
-            SQLDataLayer dl = new SQLDataLayer();
-            dl.SubmitJob(txtTitle.Text, txtDescription.Text, double.Parse(txtWage.Text), double.Parse(txtHours.Text));
-            txtTitle.Clear();
-            txtDescription.Clear();
-            txtHours.Clear();
-            txtWage.Clear();
+            if (double.TryParse(txtWage.Text, out double wage) && double.TryParse(txtHours.Text, out double hours) && txtDescription.Text != "" && txtTitle.Text != "")
+            {
+                SQLDataLayer dl = new SQLDataLayer();
+                dl.SubmitJob(txtTitle.Text, txtDescription.Text, wage, hours);
+                txtTitle.Clear();
+                txtDescription.Clear();
+                txtHours.Clear();
+                txtWage.Clear();
+            }
+            else
+                MessageBox.Show("Please enter valid values in all fields");
+
 
         }
     }
