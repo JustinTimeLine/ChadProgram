@@ -12,9 +12,11 @@ namespace ChadProgram
 {
     public partial class FriendsForm : Form
     {
+        SQLDataLayer dl = new SQLDataLayer();
         public FriendsForm()
         {
             InitializeComponent();
+            lstFriends.DataSource = dl.GetCurrentFriends();
         }
     }
 }

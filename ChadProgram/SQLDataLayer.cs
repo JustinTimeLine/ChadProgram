@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
+
 namespace ChadProgram
 {
 
@@ -343,8 +345,8 @@ namespace ChadProgram
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"select group_name from groupusers where username = '@user'", conn);
-                cmd.Parameters.AddWithValue("@user", user);
+                SqlCommand cmd = new SqlCommand($"select group_name from groupusers where username = '{user}", conn);
+                //cmd.Parameters.AddWithValue("@user", user);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -371,7 +373,7 @@ namespace ChadProgram
         {
             List<string> messages = new List<string>();
 
-            string qry = $@"select * from GroupChat where group_name = '@group' order by Message_Date asc";
+            string qry = $@"select * from GroupChat where group_name = '{group}' order by Message_Date asc";
 
 
             SqlConnection conn = new SqlConnection(connectionString);
@@ -379,7 +381,7 @@ namespace ChadProgram
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(qry, conn);
-                cmd.Parameters.AddWithValue("@group", group);
+                //cmd.Parameters.AddWithValue("@group", group);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -470,6 +472,43 @@ namespace ChadProgram
             cmd.Parameters.AddWithValue("@user1", user1);
             cmd.Parameters.AddWithValue("@user2", user2);
             return ret = ExecuteNonQuery(qry);
+        }
+
+        public List<string> GetCurrentFriends()
+        {
+            List<string> friends = new List<string>();
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand($"select user1 from friends where (user1 = '{ChatWindow.Username}' or user2 = '{ChatWindow.Username}') and request_accepted = 1", conn);
+                SqlCommand cmd2 = new SqlCommand($"select user2 from friends where (user1 = '{ChatWindow.Username}' or user2 = '{ChatWindow.Username}') and request_accepted = 1", conn);
+                //cmd.Parameters.AddWithValue("@user", user);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() != ChatWindow.Username)
+                        friends.Add(reader[0].ToString());
+                }
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    if (reader2[0].ToString() != ChatWindow.Username)
+                        friends.Add(reader2[0].ToString());
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //ExecuteDataReader("select * from chat");
+
+            return friends;
         }
 
 

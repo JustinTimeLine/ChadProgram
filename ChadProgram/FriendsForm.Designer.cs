@@ -30,6 +30,7 @@
         {
             this.lstRequests = new System.Windows.Forms.ListBox();
             this.lstFriends = new System.Windows.Forms.ListBox();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstRequests
@@ -50,11 +51,22 @@
             this.lstFriends.Size = new System.Drawing.Size(247, 319);
             this.lstFriends.TabIndex = 1;
             // 
+            // btnAccept
+            // 
+            this.btnAccept.Location = new System.Drawing.Point(566, 15);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(124, 23);
+            this.btnAccept.TabIndex = 2;
+            this.btnAccept.Text = "Accept Request?";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Visible = false;
+            // 
             // FriendsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 342);
+            this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lstFriends);
             this.Controls.Add(this.lstRequests);
             this.Name = "FriendsForm";
@@ -67,5 +79,6 @@
 
         private ListBox lstRequests;
         private ListBox lstFriends;
+        private Button btnAccept;
     }
 }
