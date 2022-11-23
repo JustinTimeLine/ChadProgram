@@ -58,15 +58,10 @@ namespace ChadProgram
                 foreach (string user in chatUsers)
                 {
                     dgvUsers.Rows.Add(user, dl.GetUnreadMessagesCount(user));
-                    //userName.Add(user);
-                    //lstUsers.Items.Add($"{user} ({dl.GetUnreadMessagesCount(user)})");
 
-                    //lstUsers.SelectedValue = user;
                 }
 
-                //dgvUsers.DataSource = userName;
-                //lstUsers.DataSource = users;
-                //lstUsers.SelectedIndex = lstUsers.Items.Count - 1;
+
             }
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             directMessages = dl.GetAllDirectChatMessages();
@@ -104,10 +99,7 @@ namespace ChadProgram
             foreach (string user in chatUsers)
             {
                 dgvUsers.Rows.Add(user, dl.GetUnreadMessagesCount(user));
-                //userName.Add(user);
-                //lstUsers.Items.Add($"{user} ({dl.GetUnreadMessagesCount(user)})");
 
-                //lstUsers.SelectedValue = user;
             }
         }
 
@@ -118,7 +110,6 @@ namespace ChadProgram
         private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DirectMessage dm = new DirectMessage(dgvUsers.CurrentRow.Cells[0].Value.ToString());
-            //DirectMessage dm = new DirectMessage(dgvUsers.CurrentRow.Cells[0].Value.ToString());
             dm.ShowDialog();
             UpdateMessages();
 

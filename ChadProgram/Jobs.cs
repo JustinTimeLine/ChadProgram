@@ -17,9 +17,6 @@ namespace ChadProgram
         {
             InitializeComponent();
             this.conn = conn;
-            //SQLDataLayer dl = new SQLDataLayer();
-            //dataGridView1.DataSource = dl.GetJobs();
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
         }
 
