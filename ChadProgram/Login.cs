@@ -21,12 +21,14 @@ namespace ChadProgram
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             SQLDataLayer dl = new SQLDataLayer();
             bool loginWorked = dl.Login(txtUsername.Text, txtPassword.Text);
             if (loginWorked)
             {
                 ChatWindow chat = new ChatWindow(txtUsername.Text);
                 chat.Show();
+                this.DialogResult = DialogResult.OK;
                 this.Hide();
             }
             else
