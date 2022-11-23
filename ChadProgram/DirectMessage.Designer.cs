@@ -50,6 +50,7 @@
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(259, 23);
             this.txtMessage.TabIndex = 1;
+            this.txtMessage.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMessage_KeyUp);
             // 
             // btnSend
             // 
