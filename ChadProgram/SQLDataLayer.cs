@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ChadProgram
 {
@@ -165,8 +166,14 @@ namespace ChadProgram
 
         public bool RegisterUser(string username, string password)
         {
+            int count = (int)ExecuteScalar($"select count(*) from users where username = '{username}'");
+            if (count == 0)
+            {
             return this.ExecuteNonQuery(@"insert into users(username, password, register_date) " +
                 "values ('" + username + "','" + password + "',getdate())");
+
+            }
+            else return false;
         }
 
         public bool FirstName(string username, string firstname)
@@ -415,12 +422,26 @@ namespace ChadProgram
 
         public bool RegisterGroup(string name)
         {
+            int count = (int)ExecuteScalar($"select count(*) from groups where group_name = '{name}'");
+            if (count == 0)
+            {
+                
             return this.ExecuteNonQuery($"use chatdb insert into groups values('{name}')");
+
+            }
+            else return false;
         }
 
         public bool RegisterGroupUser(string groupName, string username)
         {
+            int count = (int)ExecuteScalar($"select count(*) from groupusers where username = '{username}'and group_name = '{groupName}'");
+            if (count == 0)
+            {
             return this.ExecuteNonQuery($"insert into groupusers values('{username}','{groupName}')");
+                
+
+            }
+            else return false;
         }
 
         public List<string> GetUserInfo(string username)
