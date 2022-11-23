@@ -19,5 +19,23 @@ namespace ChadProgram
             lstFriends.DataSource = dl.GetCurrentFriends();
             lstRequests.DataSource = dl.GetFriendsRequests();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (lstRequests.SelectedIndex >= 0)
+            {             
+                btnAccept.Visible = true;
+            }
+            else
+            {
+                btnAccept.Visible = false;
+            }
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            dl.FriendRequestAccept(lstRequests.SelectedValue.ToString());
+            btnAccept.Visible = false;
+        }
     }
 }

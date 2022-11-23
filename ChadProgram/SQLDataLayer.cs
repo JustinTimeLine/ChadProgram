@@ -548,6 +548,14 @@ namespace ChadProgram
             return friends;
         }
 
+        public bool FriendRequestAccept(string requester)
+        {
+            //user1 is always making the request
+
+            return ExecuteNonQuery($"update Friends set request_accepted = 1 where (user1 = '{ChatWindow.Username}' and user2 = '{requester}' or user1 = '{requester}' and user2 = '{ChatWindow.Username}'");
+
+        }
+
         public int GetUnreadMessagesCount(string userName)
         {
             int count = 0;

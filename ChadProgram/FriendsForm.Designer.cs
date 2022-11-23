@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lstRequests = new System.Windows.Forms.ListBox();
             this.lstFriends = new System.Windows.Forms.ListBox();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lstRequests
@@ -60,6 +62,12 @@
             this.btnAccept.Text = "Accept Request?";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Visible = false;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FriendsForm
             // 
@@ -80,5 +88,6 @@
         private ListBox lstRequests;
         private ListBox lstFriends;
         private Button btnAccept;
+        private System.Windows.Forms.Timer timer1;
     }
 }
