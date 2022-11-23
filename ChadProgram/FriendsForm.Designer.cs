@@ -53,6 +53,8 @@
             this.lstFriends.Name = "lstFriends";
             this.lstFriends.Size = new System.Drawing.Size(247, 319);
             this.lstFriends.TabIndex = 1;
+            this.lstFriends.SelectedIndexChanged += new System.EventHandler(this.lstFriends_SelectedIndexChanged);
+            this.lstFriends.DoubleClick += new System.EventHandler(this.lstFriends_DoubleClick);
             // 
             // btnAccept
             // 

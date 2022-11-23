@@ -146,5 +146,6 @@ namespace ChadProgram
             FriendsForm f = new FriendsForm();
             f.Show();
         }
+
     }
 }
